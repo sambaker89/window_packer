@@ -1,5 +1,7 @@
 .keep_known_hosts
 packer_cache/
+box/
+logs/
 output-*
 *.box
 *.tar.gz
