@@ -5,6 +5,7 @@ logs/
 output-*
 *.box
 *.tar.gz
+eval-*
 iso
 crash.log
 tmp
