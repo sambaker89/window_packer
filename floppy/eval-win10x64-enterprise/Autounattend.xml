@@ -8,26 +8,37 @@
             <InputLocale>en-US</InputLocale>
             <SystemLocale>en-US</SystemLocale>
             <UILanguage>en-US</UILanguage>
-            <UserLocale>en-US</UserLocale>
+            <UserLocale>en-us</UserLocale>
         </component>
         <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <DiskConfiguration>
                 <Disk wcm:action="add">
                     <CreatePartitions>
                         <CreatePartition wcm:action="add">
-                            <Order>1</Order>
+                            <Size>500</Size>
                             <Type>Primary</Type>
+                            <Order>1</Order>
+                        </CreatePartition>
+                        <CreatePartition wcm:action="add">
                             <Extend>true</Extend>
+                            <Order>2</Order>
+                            <Type>Primary</Type>
                         </CreatePartition>
                     </CreatePartitions>
                     <ModifyPartitions>
                         <ModifyPartition wcm:action="add">
-                            <Extend>false</Extend>
+                            <Active>true</Active>
                             <Format>NTFS</Format>
-                            <Letter>C</Letter>
+                            <Label>system</Label>
                             <Order>1</Order>
                             <PartitionID>1</PartitionID>
-                            <Label>Windows 10</Label>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Format>NTFS</Format>
+                            <Label>Windows</Label>
+                            <Letter>C</Letter>
+                            <Order>2</Order>
+                            <PartitionID>2</PartitionID>
                         </ModifyPartition>
                     </ModifyPartitions>
                     <DiskID>0</DiskID>
@@ -35,98 +46,67 @@
                 </Disk>
                 <WillShowUI>OnError</WillShowUI>
             </DiskConfiguration>
-            <UserData>
-                <AcceptEula>true</AcceptEula>
-                <FullName>Vagrant Administrator</FullName>
-                <Organization>Vagrant Inc.</Organization>
-                <!-- Product Key from http://technet.microsoft.com/en-us/library/jj612867.aspx -->
-                <ProductKey>NPPR9-FWDCX-D2C8J-H872K-2YT43
-                    <WillShowUI>Never</WillShowUI>
-                </ProductKey>
-            </UserData>
             <ImageInstall>
                 <OSImage>
                     <InstallTo>
                         <DiskID>0</DiskID>
-                        <PartitionID>1</PartitionID>
+                        <PartitionID>2</PartitionID>
                     </InstallTo>
-                    <WillShowUI>OnError</WillShowUI>
-                    <InstallToAvailablePartition>false</InstallToAvailablePartition>
-                    <InstallFrom>
-                        <MetaData wcm:action="add">
-                            <Key>/IMAGE/NAME</Key>
-                            <Value>Windows 10 Enterprise Evaluation</Value>
-                        </MetaData>
-                    </InstallFrom>
                 </OSImage>
             </ImageInstall>
+            <UserData>
+                <ProductKey>
+                    <Key>H29XB-NDQ92-CR7QP-YXWKJ-29XQR</Key>
+                    <WillShowUI>OnError</WillShowUI>
+                </ProductKey>
+                <AcceptEula>true</AcceptEula>
+                <FullName>Sam Jon Baker</FullName>
+                <Organization>KMF INC</Organization>
+            </UserData>
         </component>
     </settings>
     <settings pass="specialize">
         <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <ComputerName>*</ComputerName>
-            <TimeZone>Pacific Standard Time</TimeZone>
-        </component>
-        <component name="Microsoft-Windows-TerminalServices-LocalSessionManager" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <fDenyTSConnections>false</fDenyTSConnections>
-        </component>
-        <component name="Networking-MPSSVC-Svc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <FirewallGroups>
-                <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
-                    <Active>true</Active>
-                    <Group>Remote Desktop</Group>
-                    <Profile>all</Profile>
-                </FirewallGroup>
-            </FirewallGroups>
-        </component>
-        <component name="Microsoft-Windows-TerminalServices-RDP-WinStationExtensions" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <UserAuthentication>0</UserAuthentication>
-        </component>
-        <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <InputLocale>en-US</InputLocale>
-            <SystemLocale>en-US</SystemLocale>
-            <UILanguage>en-US</UILanguage>
-            <UserLocale>en-US</UserLocale>
+            <OEMInformation>
+                <Manufacturer>KMF</Manufacturer>
+                <Model>XP00</Model>
+            </OEMInformation>
+            <ComputerName>WIN10CLIENT</ComputerName>
+            <CopyProfile>false</CopyProfile>
+            <TimeZone>GMT Standard Time</TimeZone>
+            <OEMName>KMF</OEMName>
         </component>
     </settings>
     <settings pass="oobeSystem">
         <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <AutoLogon>
-                <Enabled>true</Enabled>
-                <Username>vagrant</Username>
-                <Password>
-                    <Value>vagrant</Value>
-                    <PlainText>true</PlainText>
-                </Password>
-            </AutoLogon>
-            <FirstLogonCommands>
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c a:\00-run-all-scripts.cmd</CommandLine>
-                    <Description>Run all *.bat and *.cmd scripts on drive A:</Description>
-                    <Order>1</Order>
-                    <RequiresUserInput>true</RequiresUserInput>
-                </SynchronousCommand>
-            </FirstLogonCommands>
-            <OOBE>
-                <NetworkLocation>Work</NetworkLocation>
-                <ProtectYourPC>3</ProtectYourPC>
-                <HideEULAPage>true</HideEULAPage>
-            </OOBE>
             <UserAccounts>
+                <AdministratorPassword>
+                    <Value>UABAACQAJAB3ADAAcgBkADEAMgAzADQAQQBkAG0AaQBuAGkAcwB0AHIAYQB0AG8AcgBQAGEAcwBzAHcAbwByAGQA</Value>
+                    <PlainText>false</PlainText>
+                </AdministratorPassword>
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>vagrant</Value>
-                            <PlainText>true</PlainText>
+                            <Value>UABAACQAJAB3ADAAcgBkADEAMgAzADQAUABhAHMAcwB3AG8AcgBkAA==</Value>
+                            <PlainText>false</PlainText>
                         </Password>
-                        <Description>Vagrant User</Description>
-                        <DisplayName>vagrant</DisplayName>
+                        <DisplayName>Sam</DisplayName>
+                        <Name>Sam J. Baker</Name>
+                        <Description>The master</Description>
                         <Group>Administrators</Group>
-                        <Name>vagrant</Name>
                     </LocalAccount>
                 </LocalAccounts>
             </UserAccounts>
-            <TimeZone>GMT Standard Time</TimeZone>
+            <DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
+            <EnableStartMenu>false</EnableStartMenu>
+            <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
+            <OOBE>
+                <HideEULAPage>true</HideEULAPage>
+                <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <ProtectYourPC>1</ProtectYourPC>
+            </OOBE>
         </component>
         <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <InputLocale>en-US</InputLocale>
@@ -135,10 +115,5 @@
             <UserLocale>en-US</UserLocale>
         </component>
     </settings>
-    <settings pass="offlineServicing">
-        <component name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <EnableLUA>false</EnableLUA>
-        </component>
-    </settings>
-    <cpi:offlineImage cpi:source="catalog://winryadkx64/users/misheska/github/box-cutter/windows-vm/wsim/wineval/win81/x64/install_windows 10 enterprise evaluation.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim:c:/users/sam/documents/win10-client-64/sources/install.wim#Windows 10 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
