@@ -100,16 +100,16 @@
                     <PlainText>true</PlainText>
                 </Password>
             </AutoLogon>
-            <!-- run the commands loaded on floppy drive A: -->
-            <FirstLogonCommands>
 
+            <FirstLogonCommands>
+                <!-- stop user interaction about the network discovery on this PC -->
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>reg add HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff</CommandLine>
                     <Description>Disable the network discovery prompt window</Description>
                     <Order>1</Order>
                     <RequiresUserInput>false</RequiresUserInput>
                 </SynchronousCommand>
-
+                <!-- run the commands loaded on floppy drive A: -->
                 <SynchronousCommand wcm:action="add">
                    <CommandLine>cmd.exe /c a:\00-run-all-scripts.cmd</CommandLine>
                     <Description>Run all *.bat and *.cmd scripts on drive A:</Description>
@@ -165,8 +165,11 @@
             <EnableLUA>false</EnableLUA>
         </component>
     </settings>
-      <cpi:offlineImage cpi:source="wim://mnt/samdisk/window_boxcutter/iso/win0_ent_x64/install.wim#Windows 10 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
-      <!--
+      <cpi:offlineImage cpi:source="catalog://mnt/samdisk/window_boxcuter/iso/win10x64-enterprise/install_windows10_enterprise eval.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+      <!-- thiis is the local image files --> <!--
+      <cpi:offlineImage cpi:source="wim://mnt/samdisk/window_boxcutter/iso/win0x64-enterprise/install.wim#Windows 10 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+      <!-- this is the default link from the original --> <!--
       <cpi:offlineImage cpi:source="catalog://winryadkx64/users/misheska/github/box-cutter/windows-vm/wsim/wineval/win81/x64/install_windows 10 enterprise evaluation.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
       -->
+      
 </unattend>
