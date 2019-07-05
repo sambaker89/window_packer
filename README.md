@@ -1,5 +1,6 @@
 # Description
 This project is dedicated for producing **QEMU** windows box.
+Replace the ISO URL and ISO checksum for your copy of Windows install.
 
 ## Usage:
    $ packer build win10x84-enterprise-eval.json
@@ -10,6 +11,7 @@ This project is dedicated for producing **QEMU** windows box.
 ## Host Requiments:
 1. internet connection
 1. qemu-system-x86
+1. local copy of window 10 ISO files
 
 ## Notes:
 * use the Autounattend file to create a ready KVM vagrant box.
