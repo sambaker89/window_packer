@@ -31,14 +31,13 @@
       "shutdown_command": "{{ user `shutdown_command` }}",
       "output_directory":"box/output-{{ user `vm_name` }}",
       "type": "qemu",
-      "format": "qcow2",
+
       "vm_name": "{{ user `vm_name` }}",
       "boot_wait": "2s",
-      "accelerator": "kvm",
-      "disk_interface": "ide",
       "net_device": "rtl8139",
-      "winrm_username": "sam",
-      "winrm_password": "P@$$w0rd1234",
+      "disk_interface": "ide",
+      "winrm_username": "vagrant",
+      "winrm_password": "vagrant",
       "winrm_timeout": "10000s",
 
       "qemuargs": [
