@@ -41,9 +41,10 @@
                 <FullName>Vagrant Administrator</FullName>
                 <Organization>Vagrant Inc.</Organization>
                 <!-- Product Key from http://technet.microsoft.com/en-us/library/jj612867.aspx -->
-                <ProductKey>NPPR9-FWDCX-D2C8J-H872K-2YT43
+                <!--<ProductKey>
+                    <Key>NPPR9-FWDCX-D2C8J-H872K-2YT43</Key>
                     <WillShowUI>Never</WillShowUI>
-                </ProductKey>
+                </ProductKey> -->
             </UserData>
             <ImageInstall>
                 <OSImage>
@@ -65,7 +66,7 @@
     </settings>
     <settings pass="specialize">
         <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <ComputerName>*</ComputerName>
+            <ComputerName>win10client</ComputerName>
             <TimeZone>GMT Standard Time</TimeZone>
         </component>
         <component name="Microsoft-Windows-TerminalServices-LocalSessionManager" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -119,7 +120,7 @@
             </FirstLogonCommands>
 
             <OOBE>
-                <NetworkLocation>Work</NetworkLocation>
+                <!--<NetworkLocation>Work</NetworkLocation>-->
                 <ProtectYourPC>3</ProtectYourPC>
                 <HideEULAPage>true</HideEULAPage>
                 <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
@@ -165,11 +166,10 @@
             <EnableLUA>false</EnableLUA>
         </component>
     </settings>
-      <cpi:offlineImage cpi:source="catalog://mnt/samdisk/window_boxcuter/iso/win10x64-enterprise/install_windows10_enterprise eval.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
-      <!-- thiis is the local image files --> <!--
-      <cpi:offlineImage cpi:source="wim://mnt/samdisk/window_boxcutter/iso/win0x64-enterprise/install.wim#Windows 10 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
-      <!-- this is the default link from the original --> <!--
-      <cpi:offlineImage cpi:source="catalog://winryadkx64/users/misheska/github/box-cutter/windows-vm/wsim/wineval/win81/x64/install_windows 10 enterprise evaluation.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
-      -->
-      
+      <cpi:offlineImage cpi:source="catalog://mnt/samdisk/window_boxcutter/iso/win10x64-enterprise/install_windows10_enterprise_eval.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+      <!-- thiis is the local image files -->
+      <!--<cpi:offlineImage cpi:source="wim://mnt/samdisk/window_boxcutter/iso/win10x64-enterprise/install.wim#Windows 10 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" /> -->
+      <!-- this is the default link from the original -->
+      <!--<cpi:offlineImage cpi:source="catalog://winryadkx64/users/misheska/github/box-cutter/windows-vm/wsim/wineval/win81/x64/install_windows 10 enterprise evaluation.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" /> -->
+
 </unattend>
