@@ -3,6 +3,9 @@ This project is dedicated for producing **QEMU** windows box.
 
 ## Usage
    $ packer build win10x84-enterprise-eval.json
+   
+   to start headless:
+   $ packer build -var headless=true win10x84-enterprise-eval.json
 
 ## Host Requiments:
 1. internet connection
