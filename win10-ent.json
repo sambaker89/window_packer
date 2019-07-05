@@ -74,7 +74,7 @@
 
     "cm": "chef",
     "cm_version": "1",
-    "disk_size": "90350",
+    "disk_size": "65000",
     "vm_name": "eval-win10x64-enterprise",
     "memory":"2096",
     "cpus":"1",
