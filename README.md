@@ -1,9 +1,9 @@
 # Description
 This project is dedicated for producing **QEMU** windows box.
 
-## Usage
+## Usage:
    $ packer build win10x84-enterprise-eval.json
-   
+
    to start headless:
    $ packer build -var headless=true win10x84-enterprise-eval.json
 
@@ -11,5 +11,8 @@ This project is dedicated for producing **QEMU** windows box.
 1. internet connection
 1. qemu-system-x86
 
-## note
-This setup use the Autounattend file to create a ready KVM vagrant box. It automatically update window image and creates 2 default user.
+## Notes:
+* use the Autounattend file to create a ready KVM vagrant box.
+* turn off window auto update and creates 2 default user.
+* This is an evaluation copy, DO NOT include the Product Key.  It will causes "no disk image" error.
+* sets up the vagrant
