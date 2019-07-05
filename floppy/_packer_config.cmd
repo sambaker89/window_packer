@@ -6,17 +6,17 @@
 
 :: Uncomment the following to echo commands as they are run
 :: Default: (unset)
-:: set PACKER_DEBUG=1
+set PACKER_DEBUG=1
 
 :: Uncomment the following to define the directory where scripts/save-logs.cmd
 :: will save the installation logs
 :: Default: z:\c\packer_logs
-:: set PACKER_LOG_DIR=z:\c\packer_logs
+set PACKER_LOG_DIR=z:\c\packer_logs
 
 :: Uncomment the following to change the pagefile size in MB as set by
 :: floppy/pagefile.bat
 :: Default: 512
-:: set PACKER_PAGEFILE_MB=512
+set PACKER_PAGEFILE_MB=512
 
 :: Uncomment the following to pause PACKER_PAUSE seconds after each script is
 :: run by floppy/00-run-all-scripts.cmd (unless you press Y)
@@ -31,7 +31,7 @@
 :: Uncomment the following to shutdown if a script run by
 :: floppy/00-run-all-scripts.cmd returns a non-zero exit value
 :: Default: (unset)
-:: set PACKER_SHUTDOWN_ON_ERROR=1
+set PACKER_SHUTDOWN_ON_ERROR=1
 
 :: Locations to search to find files locally, before trying to download them
 :: %USERPROFILE% is listed first, as this is where Packer uploads
