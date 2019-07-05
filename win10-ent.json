@@ -1,57 +1,65 @@
-{ "_comment":"Modified for building with qemue.",
+{ "_comment":"Modified for building window 10 client with qemue.",
+
   "builders": [
     {
       "communicator": "winrm",
-      "disk_size": "{{user `disk_size`}}",
-      "memory":"{{user `memory`}}",
-      "cpus":"{{user `cpus`}}",
+      "disk_size": "{{ user `disk_size` }}",
+      "memory":"{{ user `memory` }}",
+      "cpus":"{{ user `cpus` }}",
       "floppy_files": [
         "floppy/00-run-all-scripts.cmd",
         "floppy/01-install-wget.cmd",
         "floppy/_download.cmd",
         "floppy/_packer_config.cmd",
         "floppy/disablewinupdate.bat",
-        "floppy/eval-win10x64-enterprise/Autounattend.xml",
-        "floppy/drivers/virtio-win-0.1.135/viostor/2k16/amd64/*",
-        "floppy/drivers/virtio-win-0.1.135/NetKVM/2k16/amd64/*",
         "floppy/fixnetwork.ps1",
         "floppy/install-winrm.cmd",
-        "floppy/oracle-cert.cer",
+        "floppy/openssh.bat",
         "floppy/passwordchange.bat",
         "floppy/powerconfig.bat",
-        "floppy/update.bat",
-        "floppy/zz-start-sshd.cmd"
+        "floppy/disablewinupdate.bat",
+        "floppy/zz-start-sshd.cmd",
+
+        "floppy/eval-win10x64-enterprise/Autounattend.xml"
+
       ],
 
       "headless": "{{ user `headless` }}",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "sha1",
       "iso_url": "{{ user `iso_url` }}",
-      "shutdown_command": "{{ user `shutdown_command`}}",
-      "output_directory":"box/output-",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "output_directory":"box/output-{{ user `vm_name` }}",
       "type": "qemu",
       "format": "qcow2",
-      "vm_name": "eval-win10x64-enterprise",
+      "vm_name": "{{ user `vm_name` }}",
       "boot_wait": "2s",
       "accelerator": "kvm",
       "disk_interface": "ide",
-      "winrm_password": "vagrant",
+      "net_device": "rtl8139",
+      "winrm_username": "sam",
+      "winrm_password": "P@$$w0rd1234",
       "winrm_timeout": "10000s",
-      "winrm_username": "vagrant"
+
+      "qemuargs": [
+        [ "-cpu", "Westmere" ],
+        [ "-m", "{{ user `memory` }}" ],
+        [ "-smp", "cpus={{ user `cpus` }}"  ]
+
+      ]
 
     }
   ],
+  "_comment":"this is the provisioners",
 
   "provisioners": [
     {
       "environment_vars": [
         "CM={{user `cm`}}",
-        "CM_VERSION={{user `cm_version`}}",
-        "UPDATE={{user `update`}}"
+        "CM_VERSION={{ user `cm_version` }}",
+        "UPDATE={{ user `update` }}"
       ],
       "scripts": [
-
-        "script/cmtool.bat",
 
         "script/clean.bat",
         "script/ultradefrag.bat",
@@ -61,17 +69,21 @@
     }
   ],
 
+  "_comment":"these are the default variables for the above",
+
   "variables": {
+
     "cm": "chef",
     "cm_version": "1",
     "disk_size": "90350",
+    "vm_name": "eval-win10x64-enterprise",
     "memory":"2096",
     "cpus":"1",
     "headless": "false",
     "iso_checksum": "164f022a22d2305e6fbd82f6e35d530b6bbadca8",
     "iso_url": "/mnt/samdisk/ISO.Dir/window10_enterprise_client_eval_x64_en-us.iso",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-    "update": "true",
+    "update": "false",
     "version": "0.1.0"
   }
 }
