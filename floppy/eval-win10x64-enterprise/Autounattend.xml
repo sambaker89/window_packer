@@ -100,11 +100,20 @@
                     <PlainText>true</PlainText>
                 </Password>
             </AutoLogon>
+            <!-- run the commands loaded on floppy drive A: -->
             <FirstLogonCommands>
+
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c a:\00-run-all-scripts.cmd</CommandLine>
-                    <Description>Run all *.bat and *.cmd scripts on drive A:</Description>
+                    <CommandLine>reg add HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff</CommandLine>
+                    <Description>Disable the network discovery prompt window</Description>
                     <Order>1</Order>
+                    <RequiresUserInput>false</RequiresUserInput>
+                </SynchronousCommand>
+
+                <SynchronousCommand wcm:action="add">
+                   <CommandLine>cmd.exe /c a:\00-run-all-scripts.cmd</CommandLine>
+                    <Description>Run all *.bat and *.cmd scripts on drive A:</Description>
+                    <Order>2</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
             </FirstLogonCommands>
@@ -117,7 +126,7 @@
                 <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
                 <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
             </OOBE>
-            
+
             <UserAccounts>
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
@@ -156,5 +165,8 @@
             <EnableLUA>false</EnableLUA>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="catalog://winryadkx64/users/misheska/github/box-cutter/windows-vm/wsim/wineval/win81/x64/install_windows 10 enterprise evaluation.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+      <cpi:offlineImage cpi:source="wim://mnt/samdisk/window_boxcutter/iso/win0_ent_x64/install.wim#Windows 10 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+      <!--
+      <cpi:offlineImage cpi:source="catalog://winryadkx64/users/misheska/github/box-cutter/windows-vm/wsim/wineval/win81/x64/install_windows 10 enterprise evaluation.clg" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+      -->
 </unattend>
