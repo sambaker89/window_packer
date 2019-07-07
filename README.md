@@ -2,18 +2,16 @@
 This project is dedicated for producing **QEMU** windows box.
 Replace the ISO URL and ISO checksum for your copy of Windows install.
 
-### Setting up environment variable:
-    PACKER_LOG = "1"
-    PACKER_LOG_PATH = "logs/packerlog.log"
-    TMPDIR = "tmp/"
-
-export PACKER_LOG
+### Setting up environment variables:
+    $ export PACKER_LOG = "1"
+    $ export PACKER_LOG_PATH = "logs/packerlog.log"
+    $ export TMPDIR = "tmp/"
 
 ## Usage:
-    $ packer build win10x84-enterprise-eval.json
+    $ packer build win10x84-desktop-qemu.json
 
    ### To start headless:
-    $ packer build -var headless=true win10x84-enterprise-eval.json
+    $ packer build -var headless=true -var version=0.1.2 win10x84-enterprise-eval.json
 
 ## Host Requiments:
 1. internet connection
@@ -21,7 +19,7 @@ export PACKER_LOG
 1. local copy of window 10 ISO files
 
 ## Notes:
-* use the Autounattend file to create a ready KVM vagrant box.
-* turn off window auto update and creates 2 default user.
+* use the Autounattend.xml to create a ready KVM image
+* turn off window auto update and creates a default user.
 * This is an evaluation copy, DO NOT include the Product Key.  It will causes "no disk image" error.
-* sets up the vagrant
+
