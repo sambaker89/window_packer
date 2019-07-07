@@ -1,0 +1,53 @@
+{
+  "_comment": "use for packer build window 2016 server kvm image",
+
+  "builders": [
+    {
+      "type":"qemu",
+      "disk_size": "{{ user `disk_size` }}",
+      "floppy_files": [
+        "floppy/eval-win2016-standard/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/fixnetwork.ps1",
+        "floppy/install-winrm.cmd",
+        "floppy/openssh.bat",
+        "floppy/zz-start-transports.cmd"
+      ],
+
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "output_directory": "box/output-qemu-{{ user `vm_name` }}-{{ user `version` }}",
+      "vm_name": "{{ user `vm_name` }}.qcow2",
+      "cpus": "{{ user `cpus` }}",
+      "memory": "{{ user `memory` }}",
+      "disk_interface": "{{ user `disk_interface` }}",
+      "net_device": "{{ user `net_device` }}",
+      "ssh_password": "P@$$w0rd1234",
+      "ssh_timeout": "10000s",
+      "ssh_username": "sam"
+    }
+  ],
+
+  "_comment": "no post processor nor provisioners",
+
+  "_comment":"default variables",
+
+  "variables": {
+    "cpus": "2",
+    "memory": "2048",
+    "disk_interface": "ide",
+    "net_device": "rtl8139",
+    "disk_size": "40960",
+    "headless": "false",
+    "iso_checksum": "772700802951b36c8cb26a61c040b9a8dc3816a3",
+    "iso_checksum_type":"sha1",
+    "iso_url": "/mnt/samdisk/ISO.Dir/windows_server_2016_datacenter_eval_x64_en-us.iso",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "vm_name": "eval-win2016-standard",
+    "update": "true",
+    "version": "0.0.0"
+  }
+}
