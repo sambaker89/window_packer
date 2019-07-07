@@ -15,7 +15,7 @@ Replace the ISO URL and ISO checksum for your copy of Windows install.
 
 ## Available builders:
 1. win10x64-desktop-qemu.json - winrm, kvm image only
-1. wind10x64-enterpirse-eval.json - winrm, vagran box ready and no KVM image
+1. win10x64-enterpirse-eval.json - winrm, vagran box ready and no KVM image
 1. win2012r2-standard-eval-qemu-ssh.json - KVM image only
 1. win2016-standard-eval-qemu-ssh.json - KVM image only
 
