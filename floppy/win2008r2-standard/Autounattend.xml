@@ -58,25 +58,25 @@
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>vagrant</Value>
+                            <Value>P@$$w0rd1234</Value>
                             <PlainText>true</PlainText>
                         </Password>
-                        <Description>Vagrant User</Description>
-                        <DisplayName>vagrant</DisplayName>
+                        <Description>Master User</Description>
+                        <DisplayName>Sam J. Baker</DisplayName>
                         <Group>Administrators</Group>
-                        <Name>vagrant</Name>
+                        <Name>sam</Name>
                     </LocalAccount>
                 </LocalAccounts>
                 <AdministratorPassword>
-                    <Value>vagrant</Value>
+                    <Value>P@$$w0rd1234</Value>
                     <PlainText>true</PlainText>
                 </AdministratorPassword>
             </UserAccounts>
             <AutoLogon>
                 <Enabled>true</Enabled>
-                <Username>vagrant</Username>
+                <Username>sam</Username>
                 <Password>
-                    <Value>vagrant</Value>
+                    <Value>P@$$w0rd1234</Value>
                     <PlainText>true</PlainText>
                 </Password>
             </AutoLogon>
