@@ -1,0 +1,62 @@
+{ "_comment":"Modified for building window 10 amd64 client desktop with qemue.",
+
+  "builders": [
+    {
+      "type": "qemu",
+      "disk_size": "{{ user `disk_size` }}",
+      "memory":"{{ user `memory` }}",
+      "cpus":"{{ user `cpus` }}",
+      "floppy_files": [
+        "floppy/win10x64-desktop-qemu/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/fixnetwork.ps1",
+        "floppy/install-winrm.cmd",
+        "floppy/openssh.bat",
+        "floppy/zz-start-sshd.cmd"
+      ],
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "output_directory":"box/output-qemue-{{ user `version` }}",
+      "vm_name": "{{ user `vm_name` }}-{{ user `version` }}.qcow2",
+      "boot_wait": "2s",
+      "net_device": "{{ user `net_device` }}",
+      "disk_interface": "{{ user `disk_interface` }}",
+      "communicator":"winrm",
+      "winrm_username":"sam",
+      "winrm_password": "P@$$w0rd1234",
+      "winrm_timeout":"10000s",
+      "qemuargs": [
+        [ "-cpu", "{{ user `cpu_model`}}" ],
+        [ "-m", "{{ user `memory` }}" ],
+        [ "-smp", "cpus={{ user `cpus` }}"  ]
+      ]
+    }
+  ],
+
+  "_comment":"no postprocess section",
+
+  "_comment":"no provisioners section",
+
+  "_comment": "these are the default variables for the above",
+
+  "variables": {
+
+    "disk_size": "65000",
+    "disk_interface": "ide",
+    "net_device": "rtl8139",
+    "vm_name": "eval-win10x64-desktop",
+    "memory":"1024",
+    "cpus":"1",
+    "cpu_model": "Westmere",
+    "headless": "false",
+    "iso_checksum_type": "sha1",
+    "iso_checksum": "164f022a22d2305e6fbd82f6e35d530b6bbadca8",
+    "iso_url": "/mnt/samdisk/ISO.Dir/window10_enterprise_client_eval_x64_en-us.iso",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "update": "true",
+    "version": "0.1.0"
+  }
+}
