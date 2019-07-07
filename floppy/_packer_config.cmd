@@ -45,4 +45,4 @@ set PACKER_SERVICES=opensshd sshd BvSshServer winrm
 
 :: Uncomment the following to define a new password for the sshd service
 :: Default: D@rj33l1ng
-:: set SSHD_PASSWORD=D@rj33l1ng
+set SSHD_PASSWORD=P@$$w0rd1234
