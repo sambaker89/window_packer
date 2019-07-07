@@ -1,3 +1,4 @@
+!.gitignaure
 .keep_known_hosts
 packer_cache/
 box/
@@ -12,5 +13,5 @@ tmp
 .vagrant/
 *.swp
 Makefile.local
-
+Vaganfile
 .DS_Store
