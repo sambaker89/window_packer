@@ -19,7 +19,7 @@
       "iso_checksum_type": "{{ user `iso_checksum_type` }}",
       "iso_url": "{{ user `iso_url` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
-      "output_directory":"box/output-qemue-{{ user `version` }}",
+      "output_directory":"box/output-qemu-{{ user `vm_name` }}-{{ user `version` }}",
       "vm_name": "{{ user `vm_name` }}-{{ user `version` }}.qcow2",
       "boot_wait": "2s",
       "net_device": "{{ user `net_device` }}",
