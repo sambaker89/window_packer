@@ -2,11 +2,18 @@
 This project is dedicated for producing **QEMU** windows box.
 Replace the ISO URL and ISO checksum for your copy of Windows install.
 
+### Setting up environment variable:
+    PACKER_LOG = "1"
+    PACKER_LOG_PATH = "logs/packerlog.log"
+    TMPDIR = "tmp/"
+
+export PACKER_LOG
+
 ## Usage:
-   $ packer build win10x84-enterprise-eval.json
+    $ packer build win10x84-enterprise-eval.json
 
    ### To start headless:
-   $ packer build -var headless=true win10x84-enterprise-eval.json
+    $ packer build -var headless=true win10x84-enterprise-eval.json
 
 ## Host Requiments:
 1. internet connection
