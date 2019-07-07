@@ -1,0 +1,56 @@
+{
+  "_comment": "packer builder for window server 2008 r2 sp1 KVM image",
+  "builders": [
+
+    {
+      "type": "qemu",
+      "cpus": "{{ user `cpus` }}",
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "floppy/win2008r2-standard/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/01-install-wget.cmd",
+        "floppy/_download.cmd",
+        "floppy/_packer_config.cmd",
+        "floppy/install-winrm.cmd",
+        "floppy/openssh.bat",
+        "floppy/zz-start-transports.cmd"
+      ],
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "memory": "{{ user `memory` }}",
+      "disk_interface": "{{ user `disk_interface` }}",
+      "net_device": "{{ user `net_device` }}",
+      "shutdown_command": "{{ user `shutdown_command`}}",
+      "vm_name": "{{ user `vm_name` }}.qcow2",
+      "output_directory": "box/output-qemu-{{ user `vm_name` }}-{{ user `version` }}",
+      "ssh_password": "P@$$w0rd1234",
+      "ssh_username": "sam",
+      "ssh_timeout": "10000s"
+    }
+  ],
+
+  "_comment": "provesioner section",
+
+  "_comment": "builder default variables",
+
+  "variables": {
+    "cpus": "2",
+    "memory": "2048",
+    "guest_additions_url": "",
+    "cm": "chef",
+    "cm_version": "",
+    "disk_size": "40960",
+    "disk_interface": "ide",
+    "net_device": "rtl8139",
+    "headless": "false",
+    "iso_checksum": "d3fd7bf85ee1d5bdd72de5b2c69a7b470733cd0a",
+    "iso_url": "/mnt/samdisk/ISO.Dir/windows_server_2008_r2_with_sp1_x64_en-us.iso",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "update": "true",
+    "vm_name": "win2008r2-standard-ssh",
+    "version": "0.0.0"
+  }
+}
