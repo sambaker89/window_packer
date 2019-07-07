@@ -50,7 +50,7 @@
     "iso_url": "/mnt/samdisk/ISO.Dir/windows_server_2008_r2_with_sp1_x64_en-us.iso",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
     "update": "true",
-    "vm_name": "win2008r2-standard-ssh",
+    "vm_name": "eval-win2008r2-standard",
     "version": "0.0.0"
   }
 }
