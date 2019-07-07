@@ -26,7 +26,7 @@
       "boot_wait": "2s",
       "ssh_password": "P@$$w0rd1234",
       "ssh_username": "sam",
-      "ssh_wait_timeout": "10000s"
+      "ssh_timeout": "10000s"
     }
 ],
   "_comment": "no provisioners. evulation copy only. no product id",
