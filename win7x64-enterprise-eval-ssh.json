@@ -1,0 +1,60 @@
+{
+  "_comment": "packer build for window 7 x86-64 KVM image",
+
+  "builders": [
+
+    {
+      "type": "qemu",
+      "cpus": "{{ user `cpus` }}",
+      "disk_size": "{{user `disk_size` }}",
+      "floppy_files": [
+        "floppy/win7x64-enterprise/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/install-winrm.cmd",
+        "floppy/fixnetwork.ps1",
+
+        "floppy/_packer_config.cmd",
+        "floppy/passwordchange.bat",
+        "floppy/networkprompt.bat",
+
+        "floppy/openssh.bat",
+
+        "floppy/zz-start-transports.cmd"
+      ],
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "memory": "{{ user `memory` }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+
+      "disk_interface": "{{ user `disk_interface` }}",
+      "net_device": "{{ user `net_device` }}",
+      "output_directory": "bpx/output-qemu-{{ user `vm_name` }}-{{ user `version` }}",
+      "vm_name": "{{ user `vm_name` }}.qcow2",
+      "ssh_password": "P@$$w0rd1234",
+      "ssh_username": "sam",
+      "ssh_timeout": "10000s"
+    }
+  ],
+  "_comment": "provesioner section",
+
+  "_comment": "the build default varibles",
+
+  "variables": {
+    "cpus": "2",
+    "memory": "3072",
+    "guest_additions_url": "",
+    "disk_interface": "ide",
+    "net_device": "rtl8139",
+    "disk_size": "40960",
+    "headless": "false",
+    "iso_checksum_type": "sha1",
+    "iso_checksum": "15ddabafa72071a06d5213b486a02d5b55cb7070",
+    "iso_url": "/mnt/samdisk/ISO.Dir/window7_enterprise_client_eval_x64_en-us.iso",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "vm_name": "eval-win7x64-enterprise-ssh",
+    "update": "true",
+    "version": "0.0.0"
+  }
+}
