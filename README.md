@@ -2,7 +2,7 @@
 This project is dedicated for producing **QEMU** windows box.
 Replace the ISO URL and ISO checksum for your copy of Windows install.
 
-### Setting up environment variables:
+### Setting up environment variables: (set these variables in the shell)
     $ export PACKER_LOG = "1"
     $ export PACKER_LOG_PATH = "logs/packerlog.log"
     $ export TMPDIR = "tmp/"
