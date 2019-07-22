@@ -53,7 +53,7 @@
       "iso_checksum_type": "{ user `iso_checksum_type`}",
       "iso_url": "{{ user `iso_url` }}",
       "shutdown_command": "{{ user `shutdown_command`}}",
-      "tools_upload_flavor": "windows",
+
       "output_directory":"box/output-vmware-{{ user `vm_name` }}-{{ user `version` }}",
       "vm_name": "{{ user `vm_name`}}-{{ user `version`}}.ova",
       "vmx_data": {
