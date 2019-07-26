@@ -1,9 +1,47 @@
-{ "_comment":"Modified for building window 10 amd64 client desktop with qemue.",
+{ "_comment":"Modified for building window 10 amd64 client desktop with qemue and vmware.",
 
   "builders": [
     {
+      "type": "vmware-iso",
+      "communicator": "winrm",
+      "disk_size": "{{user `disk_size`}}",
+      "disk_adapter_type":"{{ user `disk_interface` }}",
+      "memory":"{{ user `memory` }}",
+      "cpus": "{{ user `cpus` }}",
+      "floppy_files": [
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/01-install-wget.cmd",
+        "floppy/_download.cmd",
+        "floppy/_packer_config.cmd",
+        "floppy/disablewinupdate.bat",
+        "floppy/fixnetwork.ps1",
+        "floppy/install-winrm.cmd",
+        "floppy/openssh.bat",
+        "floppy/zz-start-sshd.cmd",
+        "floppy/eval-win10x64-enterprise/Autounattend.xml"
+      ],
+      
+      "network":"nat",
+      "network_adapter_type":"E1000e",
+      "headless": "{{ user `headless` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "output_directory":"box/output-vmware-{{ user `vm_name` }}-{{ user `version` }}",
+      "tools_upload_flavor": "windows",
+      "vm_name": "{{ user `vm_name` }}",
+      "winrm_password": "vagrant",
+      "winrm_timeout": "10000s",
+      "winrm_username": "vagrant"
+    },
+
+    {
+      "type": "qemu",
       "communicator": "winrm",
       "disk_size": "{{ user `disk_size` }}",
+      "net_device": "{{ user `net_device` }}",
+      "disk_interface": "{{ user `disk_interface` }}",
       "memory":"{{ user `memory` }}",
       "cpus":"{{ user `cpus` }}",
       "floppy_files": [
@@ -15,9 +53,6 @@
         "floppy/fixnetwork.ps1",
         "floppy/install-winrm.cmd",
         "floppy/openssh.bat",
-        
-
-
         "floppy/zz-start-sshd.cmd",
         "floppy/eval-win10x64-enterprise/Autounattend.xml"
       ],
@@ -26,12 +61,9 @@
       "iso_checksum_type": "{{ user `iso_checksum_type` }}",
       "iso_url": "{{ user `iso_url` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
-      "output_directory":"box/output-{{ user `vm_name` }}",
-      "type": "qemu",
+      "output_directory":"box/output-qemu-{{ user `vm_name` }}-{{ user `version` }}",
       "vm_name": "{{ user `vm_name` }}",
       "boot_wait": "2s",
-      "net_device": "{{ user `net_device` }}",
-      "disk_interface": "{{ user `disk_interface` }}",
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
       "winrm_timeout": "10000s",
@@ -45,34 +77,7 @@
 
   "_comment":"this is the postprocess section",
 
-  "post-processors": [
-    {
-      "compression_level": 1,
-      "keep_input_artifact": false,
-      "output": "box/{{.Provider}}/{{user `vm_name`}}-vagrant-{{user `version`}}.box",
-      "type": "vagrant",
-      "vagrantfile_template": "tpl/vagrantfile-eval-win10x64-enterprise.tpl"
-    }
-  ],
-
   "_comment":"this is the provisioners",
-
-  "provisioners": [
-    {
-      "environment_vars": [
-        "CM={{user `cm`}}",
-        "CM_VERSION={{ user `cm_version` }}",
-        "UPDATE={{ user `update` }}"
-      ],
-      "scripts": [
-        "script/vagrant.bat",
-        "script/clean.bat",
-        "script/ultradefrag.bat",
-        "script/sdelete.bat"
-      ],
-      "type": "windows-shell"
-    }
-  ],
 
   "_comment":"these are the default variables for the above",
 
